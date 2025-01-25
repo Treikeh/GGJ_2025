@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         float horizontalMovement = _horizontalInput * _moveSpeed * Time.deltaTime;
 
-        _rBody.gravityScale = map(_bubbleScale.desiredScale, 1f, _bubbleScale.maxScale, 1f, 0.1f);
+        _rBody.gravityScale = map(_bubbleScale.desiredScale, 1f, _bubbleScale.maxScale, 1f, 0.5f);
 
         if (Physics2D.Raycast(groundCheckPosition.position, Vector2.down, 0.1f, groundLayer))
         {
@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
         {
             _rBody.linearVelocity = new Vector3(_rBody.linearVelocityX, _jumpForce);
         }
+    }
+
+    public void BubbleHit()
+    {
+        Debug.Log("Popped");
     }
 
     float map(float s, float a1, float a2, float b1, float b2)
