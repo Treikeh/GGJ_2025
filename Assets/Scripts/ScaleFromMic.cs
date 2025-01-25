@@ -8,7 +8,7 @@ public class ScaleFromMic : MonoBehaviour
     public Vector2 maxScale;
     public MicDetection detector;
 
-    public float loudnessSensibility = 100f;
+    public float loudnessSensibility = 10f;
     public float threshold = 0.1f;
     
 
@@ -21,6 +21,7 @@ public class ScaleFromMic : MonoBehaviour
     void Update()
     {
         float loudness = detector.GetLoudnessFromMic() * loudnessSensibility;
+        Debug.Log("Detected loudness" + loudness);
 
         if (loudness < threshold)
         {

@@ -1,14 +1,17 @@
 using UnityEngine;
 
+// Credits: Valem tutorials, https://www.youtube.com/watch?v=dzD0qP8viLw
+
 public class MicDetection : MonoBehaviour
 {
+    public int device = 0;
     private int samlpeWindow = 64;
     private AudioClip micClip;
 
 
     void Start()
     {
-
+        MicToAudioClip();
     }
 
     // Update is called once per frame
@@ -21,14 +24,15 @@ public class MicDetection : MonoBehaviour
     public void MicToAudioClip()
     {
         // Mic to AudioClip
-        string micName = Microphone.devices[0];
+        string micName = Microphone.devices[device];
+        Debug.Log(micName);
         micClip = Microphone.Start(micName, true, 20, AudioSettings.outputSampleRate);
     }
 
 
     public float GetLoudnessFromMic()
     {
-        return GetLoadnessFromAudioClip(Microphone.GetPosition(Microphone.devices[0]), micClip);
+        return GetLoadnessFromAudioClip(Microphone.GetPosition(Microphone.devices[device]), micClip);
     }
 
 
@@ -38,6 +42,7 @@ public class MicDetection : MonoBehaviour
 
         if (startPosition < 0)
         {
+            Debug.Log("Start position < 0");
             return 0;
         }
 
@@ -51,7 +56,7 @@ public class MicDetection : MonoBehaviour
             totalLoudness += Mathf.Abs(waveData[i]);
         }
 
-
+        Debug.Log("Total loudness " + totalLoudness);
         return totalLoudness / samlpeWindow;
     }
 }
