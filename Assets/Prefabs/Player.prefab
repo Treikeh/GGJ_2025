@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3548860288289614758}
   - component: {fileID: 6931367527265056164}
+  - component: {fileID: 4404527166510894554}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -268,3 +269,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4404527166510894554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015738963617153414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb53e9ff6fba7940b1a84ad0a580925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
+  minScale: {x: 1, y: 1}
+  maxScale: {x: 0, y: 0}
+  detector: {fileID: 0}
+  loudnessSensibility: 10
+  threshold: 0.1
