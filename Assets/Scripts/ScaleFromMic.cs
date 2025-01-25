@@ -11,7 +11,9 @@ public class ScaleFromMic : MonoBehaviour
     public float reductionSpeed = 0.1f;
     public float maxScale = 3f;
 
-    private float desiredScale = 1f;
+    //[HideInInspector] public float totalScale;
+
+    [HideInInspector] public float desiredScale = 1f;
     private Vector2 maxSize;
     
 
@@ -19,7 +21,7 @@ public class ScaleFromMic : MonoBehaviour
     void Update()
     {
         float loudness = detector.GetLoudnessFromMic() * loudnessSensibility;
-        Debug.Log("Detected loudness" + loudness);
+        //Debug.Log("Detected loudness" + loudness);
 
         if (loudness < threshold)
         {

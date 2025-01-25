@@ -56,7 +56,7 @@ public class MicDetection : MonoBehaviour
             totalLoudness += Mathf.Abs(waveData[i]);
         }
 
-        Debug.Log("Total loudness " + totalLoudness);
+        //Debug.Log("Total loudness " + totalLoudness);
         return totalLoudness / samlpeWindow;
     }
 }
