@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheckPosition;
     [SerializeField] private ScaleFromMic _bubbleScale;
-
+    [SerializeField] private bool gumUnlocked = false;
+    [SerializeField] private GameObject bubbleSprite;
     private float _horizontalInput = 0f;
     private bool isGrounded = false;
     private Rigidbody2D _rBody;
@@ -16,6 +17,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rBody = GetComponent<Rigidbody2D>();
+        if (gumUnlocked)
+        {
+            bubbleSprite.SetActive(true);
+        }
     }
 
 
@@ -24,7 +29,10 @@ public class PlayerController : MonoBehaviour
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         float horizontalMovement = _horizontalInput * _moveSpeed * Time.deltaTime;
 
-        _rBody.gravityScale = map(_bubbleScale.desiredScale, 1f, _bubbleScale.maxScale, 1f, 0.5f);
+        if (gumUnlocked)
+        {
+            _rBody.gravityScale = map(_bubbleScale.desiredScale, 1f, _bubbleScale.maxScale, 1f, 0.5f);
+        }
 
         if (Physics2D.Raycast(groundCheckPosition.position, Vector2.down, 0.1f, groundLayer))
         {
@@ -38,7 +46,6 @@ public class PlayerController : MonoBehaviour
         _rBody.linearVelocity = new Vector2(horizontalMovement, _rBody.linearVelocity.y);
     }
 
-
     private void OnJump()
     {
         if (isGrounded == true)
@@ -50,6 +57,13 @@ public class PlayerController : MonoBehaviour
     public void BubbleHit()
     {
         Debug.Log("Popped");
+    }
+
+
+    public void BubbleGum()
+    {
+        gumUnlocked = true;
+        bubbleSprite.SetActive(true);
     }
 
     float map(float s, float a1, float a2, float b1, float b2)
