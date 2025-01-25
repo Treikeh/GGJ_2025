@@ -26,11 +26,12 @@ public class PlayerController : MonoBehaviour
 
         // Ground check
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _rBody.linearVelocityY = _jumpForce;
-        }
-
         _rBody.linearVelocity = new Vector2(horizontalMovement, _rBody.linearVelocity.y);
+    }
+
+
+    private void OnJump()
+    {
+        _rBody.linearVelocity = new Vector3(_rBody.linearVelocityX, _jumpForce);
     }
 }
