@@ -376,7 +376,7 @@ MonoBehaviour:
   maxScale: {x: 5, y: 5}
   detector: {fileID: 1229094073}
   loudnessSensibility: 100
-  threshold: 0.01
+  threshold: 0.1
 --- !u!114 &1229094073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164925a7b84715f458a34d319ac6526d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  device: 0
 --- !u!212 &1229094074
 SpriteRenderer:
   m_ObjectHideFlags: 0
