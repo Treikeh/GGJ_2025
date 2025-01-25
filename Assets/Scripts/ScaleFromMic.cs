@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class ScaleFromMic : MonoBehaviour
 {
-    public float scaleLerpSpeed = 5f;
+    [SerializeField] private MicDetection detector;
+    [SerializeField] private float loudnessSensibility = 10f;
+    [SerializeField] private float threshold = 0.1f;
+
+    public float scaleLerpSpeed = 1f;
     public float increaseSpeed = 1f;
     public float reductionSpeed = 0.1f;
     public float maxScale = 3f;
-    public MicDetection detector;
 
-    public float loudnessSensibility = 10f;
-    public float threshold = 0.1f;
-
-    private Vector2 maxSize;
     private float desiredScale = 1f;
+    private Vector2 maxSize;
     
 
 
