@@ -2,22 +2,20 @@ using UnityEngine;
 
 public class ScaleFromMic : MonoBehaviour
 {
-
-    public AudioSource source;
-    public Vector2 minScale;
-    public Vector2 maxScale;
+    public float scaleLerpSpeed = 5f;
+    public float increaseSpeed = 1f;
+    public float reductionSpeed = 0.1f;
+    public float maxScale = 3f;
     public MicDetection detector;
 
     public float loudnessSensibility = 10f;
     public float threshold = 0.1f;
+
+    private Vector2 maxSize;
+    private float desiredScale = 1f;
     
 
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         float loudness = detector.GetLoudnessFromMic() * loudnessSensibility;
@@ -26,8 +24,14 @@ public class ScaleFromMic : MonoBehaviour
         if (loudness < threshold)
         {
             loudness = 0f;
+            desiredScale -= reductionSpeed;
         }
 
-        transform.localScale = Vector2.Lerp(minScale, maxScale, loudness);
+        desiredScale += loudness * increaseSpeed;
+        desiredScale = Mathf.Clamp(desiredScale, 1f, maxScale);
+
+        maxSize = new Vector2(1f, 1f) * desiredScale;
+
+        transform.localScale = Vector2.Lerp(transform.localScale, maxSize, scaleLerpSpeed);
     }
 }
