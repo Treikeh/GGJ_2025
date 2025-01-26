@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnBubbleHit()
     {
+        gumUnlocked = false;
         _rBody.gravityScale = 1f;
         bubbleSprite.SetActive(false);
         soundSource.PlayOneShot(popSound);
@@ -107,7 +108,6 @@ public class PlayerController : MonoBehaviour
     public void OnBubbleGumPickedUp()
     {
         gumUnlocked = true;
-        
         bubbleSprite.SetActive(true);
     }
 
