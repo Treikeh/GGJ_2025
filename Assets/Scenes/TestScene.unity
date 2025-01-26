@@ -611,6 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubbleGum
       objectReference: {fileID: 0}
+    - target: {fileID: 6944015093673916955, guid: f428b2f97d1aa9e4f9b3d3caf2868c48, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -624,6 +628,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 255016107988535117, guid: b171fdf01d456e445a2ae565bcca474c, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 726706591918652565, guid: b171fdf01d456e445a2ae565bcca474c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -667,6 +675,14 @@ PrefabInstance:
     - target: {fileID: 1230386029641681642, guid: b171fdf01d456e445a2ae565bcca474c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470253637264565776, guid: b171fdf01d456e445a2ae565bcca474c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470253637264565776, guid: b171fdf01d456e445a2ae565bcca474c, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

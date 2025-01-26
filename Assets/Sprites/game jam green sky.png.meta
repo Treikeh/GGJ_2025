@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      game jam green sky_0: 8825060165352012212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

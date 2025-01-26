@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MicDetection : MonoBehaviour
 {
-    public int device = 0;
     private int samlpeWindow = 64;
     private AudioClip micClip;
 
@@ -14,17 +13,10 @@ public class MicDetection : MonoBehaviour
         MicToAudioClip();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void MicToAudioClip()
     {
         // Mic to AudioClip
-        string micName = Microphone.devices[device];
+        string micName = Microphone.devices[Globals.micIndex];
         Debug.Log(micName);
         micClip = Microphone.Start(micName, true, 20, AudioSettings.outputSampleRate);
     }
@@ -32,7 +24,7 @@ public class MicDetection : MonoBehaviour
 
     public float GetLoudnessFromMic()
     {
-        return GetLoadnessFromAudioClip(Microphone.GetPosition(Microphone.devices[device]), micClip);
+        return GetLoadnessFromAudioClip(Microphone.GetPosition(Microphone.devices[Globals.micIndex]), micClip);
     }
 
 
