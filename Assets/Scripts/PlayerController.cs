@@ -14,6 +14,27 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rBody;
 
 
+    private void OnEnable() {
+        Globals.playerWon += OnPlayerFailed;
+        Globals.playerFailed += OnPlayerFailed;
+        Globals.bubbleHit += OnBubbleHit;
+        Globals.bubbleGumPickedUp += OnBubbleGumPickedUp;
+    }
+
+    private void OnDisable() {
+        Globals.playerWon -= OnPlayerFailed;
+        Globals.playerFailed -= OnPlayerFailed;
+        Globals.bubbleHit -= OnBubbleHit;
+        Globals.bubbleGumPickedUp -= OnBubbleGumPickedUp;
+    }
+
+    private void OnPlayerFailed()
+    {
+        _rBody.linearVelocity = Vector2.zero;
+        enabled = false;
+    }
+
+
     void Start()
     {
         _rBody = GetComponent<Rigidbody2D>();
@@ -54,13 +75,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void BubbleHit()
+    public void OnBubbleHit()
     {
-        Debug.Log("Popped");
+        bubbleSprite.SetActive(false);
     }
 
 
-    public void BubbleGum()
+    public void OnBubbleGumPickedUp()
     {
         gumUnlocked = true;
         bubbleSprite.SetActive(true);

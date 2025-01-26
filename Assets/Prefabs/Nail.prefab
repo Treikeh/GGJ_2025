@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6167015054045197835}
   - component: {fileID: 37105158645546091}
   - component: {fileID: 42759320970428055}
-  m_Layer: 6
+  - component: {fileID: 4189933893088559726}
+  m_Layer: 0
   m_Name: Nail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,3 +163,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 3
+--- !u!114 &4189933893088559726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7304258935957691103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f1bc83cca6ef9e43bc9c27dfb25494c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
