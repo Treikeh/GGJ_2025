@@ -190,7 +190,7 @@ MonoBehaviour:
   playerSprite: {fileID: 5699066921247131709}
   rocketSprite: {fileID: -1767973525431363161, guid: cd0ae381a09f6ae499b017a638a55d40, type: 3}
   soundSource: {fileID: 3324565287891416762}
-  jumpSound: {fileID: 8300000, guid: dfb2c04723251e34588a6535d12dd668, type: 3}
+  jumpSound: {fileID: 8300000, guid: e6e56615c98608344acc1553127d20d9, type: 3}
   popSound: {fileID: 8300000, guid: d38f13743923ee34eb271b292207b6f6, type: 3}
   rocketYippeeSound: {fileID: 8300000, guid: 02553cad22ac7ad42b8065c3f6de156b, type: 3}
 --- !u!82 &3324565287891416762
