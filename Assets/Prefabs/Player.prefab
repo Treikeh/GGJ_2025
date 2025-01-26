@@ -605,7 +605,7 @@ MonoBehaviour:
   threshold: 0.4
   scaleLerpSpeed: 1.5
   increaseSpeed: 0.1
-  reductionSpeed: 0.01
+  reductionSpeed: 0.03
   maxScale: 5
   desiredScale: 1
 --- !u!1 &6732881625153094263
