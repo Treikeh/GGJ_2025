@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnBubbleHit()
     {
+        _rBody.gravityScale = 1f;
         bubbleSprite.SetActive(false);
     }
 
