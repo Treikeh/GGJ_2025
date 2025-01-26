@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bubbleSprite;
     private float _horizontalInput = 0f;
     private bool isGrounded = false;
+    private bool inRocket = false;
     private Rigidbody2D _rBody;
 
 
     private void OnEnable() {
         Globals.playerWon += OnPlayerFailed;
         Globals.playerFailed += OnPlayerFailed;
+        Globals.enteredRocket += OnEnteredRocket;
         Globals.bubbleHit += OnBubbleHit;
         Globals.bubbleGumPickedUp += OnBubbleGumPickedUp;
     }
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private void OnDisable() {
         Globals.playerWon -= OnPlayerFailed;
         Globals.playerFailed -= OnPlayerFailed;
+        Globals.enteredRocket -= OnEnteredRocket;
         Globals.bubbleHit -= OnBubbleHit;
         Globals.bubbleGumPickedUp -= OnBubbleGumPickedUp;
     }
@@ -64,7 +67,14 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        _rBody.linearVelocity = new Vector2(horizontalMovement, _rBody.linearVelocity.y);
+        if (inRocket)
+        {
+            _rBody.linearVelocityX = 10f * Time.deltaTime;
+        }
+        else
+        {
+            _rBody.linearVelocity = new Vector2(horizontalMovement, _rBody.linearVelocity.y);
+        }
     }
 
     private void OnJump()
@@ -85,6 +95,11 @@ public class PlayerController : MonoBehaviour
     {
         gumUnlocked = true;
         bubbleSprite.SetActive(true);
+    }
+
+    public void OnEnteredRocket()
+    {
+        inRocket = true;
     }
 
     float map(float s, float a1, float a2, float b1, float b2)

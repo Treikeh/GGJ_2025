@@ -9,4 +9,5 @@ public static class Globals
     public static Action playerFailed;
     public static Action bubbleGumPickedUp;
     public static Action bubbleHit;
+    public static Action enteredRocket;
 }
