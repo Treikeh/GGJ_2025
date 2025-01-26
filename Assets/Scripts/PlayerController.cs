@@ -9,8 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ScaleFromMic _bubbleScale;
     [SerializeField] private bool gumUnlocked = false;
     [SerializeField] private GameObject bubbleSprite;
+    [SerializeField] private Transform spriteTransfrom;
+    [SerializeField] private SpriteRenderer playerSprite;
+    [SerializeField] private Sprite rocketSprite;
     private float _horizontalInput = 0f;
     private bool isGrounded = false;
+    private bool gameRunning = true;
     private bool inRocket = false;
     private Rigidbody2D _rBody;
 
@@ -34,7 +38,7 @@ public class PlayerController : MonoBehaviour
     private void OnPlayerFailed()
     {
         _rBody.linearVelocity = Vector2.zero;
-        enabled = false;
+        gameRunning = false;
     }
 
 
@@ -69,9 +73,9 @@ public class PlayerController : MonoBehaviour
 
         if (inRocket)
         {
-            _rBody.linearVelocityX = 10f * Time.deltaTime;
+            _rBody.linearVelocityY = 100f * Time.deltaTime;
         }
-        else
+        else if (gameRunning == true)
         {
             _rBody.linearVelocity = new Vector2(horizontalMovement, _rBody.linearVelocity.y);
         }
@@ -94,12 +98,24 @@ public class PlayerController : MonoBehaviour
     public void OnBubbleGumPickedUp()
     {
         gumUnlocked = true;
+        
         bubbleSprite.SetActive(true);
     }
 
     public void OnEnteredRocket()
     {
+        spriteTransfrom.localScale = new Vector2(7.5f, 7.5f);
+        spriteTransfrom.localPosition = new Vector2(0f, -2.5f);
+        playerSprite.sprite = rocketSprite;
+        bubbleSprite.SetActive(false);
         inRocket = true;
+        _rBody.linearVelocity = Vector2.zero;
+        Invoke(nameof(OnPlayerInRocket), 3f);
+    }
+
+    public void OnPlayerInRocket()
+    {
+        Globals.playerWon?.Invoke();
     }
 
     float map(float s, float a1, float a2, float b1, float b2)
