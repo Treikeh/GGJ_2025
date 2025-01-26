@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform spriteTransfrom;
     [SerializeField] private SpriteRenderer playerSprite;
     [SerializeField] private Sprite rocketSprite;
+    [SerializeField] private AudioSource soundSource;
+
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip popSound;
+    [SerializeField] private AudioClip rocketYippeeSound;
+
     private float _horizontalInput = 0f;
     private bool isGrounded = false;
     private bool gameRunning = true;
@@ -85,6 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded == true)
         {
+            soundSource.PlayOneShot(jumpSound);
             _rBody.linearVelocity = new Vector3(_rBody.linearVelocityX, _jumpForce);
         }
     }
@@ -93,6 +100,7 @@ public class PlayerController : MonoBehaviour
     {
         _rBody.gravityScale = 1f;
         bubbleSprite.SetActive(false);
+        soundSource.PlayOneShot(popSound);
     }
 
 
@@ -111,6 +119,7 @@ public class PlayerController : MonoBehaviour
         bubbleSprite.SetActive(false);
         inRocket = true;
         _rBody.linearVelocity = Vector2.zero;
+        soundSource.PlayOneShot(rocketYippeeSound);
         Invoke(nameof(OnPlayerInRocket), 3f);
     }
 
